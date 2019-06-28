@@ -2,9 +2,10 @@
         id: string,
         name: string,
         category: string,
-        about: string,
+        about?: string,
         deliveryEstimate: string,
         rating: number,
-        hours: string,
-        imagePath: string
+        hours?: string,
+        imagePath: string,
+
     }

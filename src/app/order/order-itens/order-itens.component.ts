@@ -1,4 +1,4 @@
-import { ShoppingCartService } from './../../restaurant-detail/shopping-cart/shopping-cart.service';
+import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { CartItem } from './../../restaurant-detail/shopping-cart/cart-item.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 

@@ -1,17 +1,15 @@
-import { OrderService } from './order/order.service';
-import { ShoppingCartService } from './restaurant-detail/shopping-cart/shopping-cart.service';
+import { SnackbarComponent } from './shared/snackbar/snackbar.component';
+import { ConsumirApiCorreioService } from './services/consumirApiCorreio.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from './shared/shared.module';
 import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shopping-cart.component';
-import { RestaurantsService } from './restaurants/restaurants.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule } from '@angular/http';
-import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, PreloadAllModules } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 import { ROUTES } from './app.routes';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantComponent } from './restaurants/restaurant/restaurant.component';
@@ -20,17 +18,17 @@ import { MenuItemComponent } from './restaurant-detail/menu/menu-item/menu-item.
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 import { ReviewComponent } from './restaurant-detail/reviews/review/review.component';
-import { OrderComponent } from './order/order.component';
-import { RadiusComponent } from './radius/radius.component';
-import { OrderItensComponent } from './order/order-itens/order-itens.component';
-import { DeliveryCostsComponent } from './delivery-costs/delivery-costs.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    AboutComponent,
     RestaurantsComponent,
     RestaurantComponent,
     MenuComponent,
@@ -39,18 +37,21 @@ import { DeliveryCostsComponent } from './delivery-costs/delivery-costs.componen
     ShoppingCartComponent,
     ReviewsComponent,
     ReviewComponent,
-    OrderComponent,
-    RadiusComponent,
-    OrderItensComponent,
-    DeliveryCostsComponent
+    OrderSummaryComponent,
+    NotFoundComponent,
+    LoginComponent,
+    SnackbarComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule,
-    FormsModule,
-    RouterModule.forRoot(ROUTES)
+    BrowserAnimationsModule,
+    HttpClientModule,
+    SharedModule.forRoot(),
+    RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
   ],
-  providers: [RestaurantsService, ShoppingCartService, OrderService],
+  providers: [ConsumirApiCorreioService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+// enableTracing: true

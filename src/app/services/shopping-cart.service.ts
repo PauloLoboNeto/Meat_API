@@ -1,5 +1,5 @@
-import { Item } from './../menu/menu-item/menu-item.model';
-import { CartItem } from './cart-item.model';
+import { Item } from './../restaurant-detail/menu/menu-item/menu-item.model';
+import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 export class ShoppingCartService {
 
   itens: CartItem[] = [];
@@ -13,7 +13,7 @@ export class ShoppingCartService {
   }
 
   adicionar(item: Item) {
-    let foundItem = this.itens.find((mItem)=> mItem.menuItem.id === item.id);
+    let foundItem = this.itens.find((mItem) => mItem.menuItem.id === item.id);
 
     if (foundItem) {
       this.aumentarQuantidade(foundItem);
@@ -26,11 +26,11 @@ export class ShoppingCartService {
     this.itens.splice(this.itens.indexOf(item), 1);
   }
 
-  aumentarQuantidade(item: CartItem){
+  aumentarQuantidade(item: CartItem) {
     item.quantity = item.quantity + 1;
   }
 
-  diminuirQuantidade(item: CartItem){
+  diminuirQuantidade(item: CartItem) {
     item.quantity = item.quantity - 1;
   }
 }

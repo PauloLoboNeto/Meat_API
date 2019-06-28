@@ -1,0 +1,52 @@
+let name: string
+let name = "R2-D2"
+
+Typescript
+any
+boolean
+string
+
+
+arrays
+let players: number[]=[1,2,3]
+let players: Array<number> = [1,2,3]
+let players = [1,2,3]
+
+
+preciso ter um tsconfig.json -> posso deixá-lo vazio
+
+pra gerar arquivo javascript: tsc -w || tsc arquivo.ts
+se eu quiser gerar em pasta separada, utilizar configurações no tsconfig.json
+
+
+npm init -f = para iniciar as configurações do package.json
+
+para injetar dependências, basta declarar no construtor
+
+para um serviço receber injeçõs de outro serviço ou componente, é necessário anotá-lo com @Injectable()
+
+Há alguns exemplos de serviços disponibilizados pelo angular: Title, HTTP, e Router
+json-server db.json
+
+todos os retornos http são do tipo observable<response>
+
+npm install -g @angular/cli
+
+ng new traning-bank
+
+
+se eu usar | async = não precisa do subscribe na hora de esperar o serviço, pois o | async já faz o subscribe pra mim
+
+novalidate = para que os navegadores não possam validar conforme desejam
+
+#form="ngForm" para poder controlar como um form
+
+para associar o ngModel a um input, o name="" precisa ser informado e preciso setar ngModel
+
+
+estudar switchMap | uso ao invés de usar subscribe dentro de outro subscribe
+
+ng build - build de desenv
+ng buil --prod - build de prod
+
+nodemon --watch backend backend/dist/server.js

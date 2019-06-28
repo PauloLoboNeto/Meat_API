@@ -1,8 +1,7 @@
 import { ActivatedRoute } from '@angular/router';
-import { Http } from '@angular/http';
-import { RestaurantsService } from './../../restaurants/restaurants.service';
+import { RestaurantsService } from '../../services/restaurants.service';
 import { Item } from './menu-item/menu-item.model';
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'mt-menu',
@@ -10,7 +9,7 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  itens: Item[]
+  itens: Item[];
 
   constructor(private restsService: RestaurantsService,
     private route: ActivatedRoute) { }
@@ -19,11 +18,11 @@ export class MenuComponent implements OnInit {
     this.restsService.menuItemRestaurant(this.route.parent.snapshot.params['id']).subscribe(itens => this.itens = itens);
   }
 
-  adicionarItemNoCarrinho(item: Item){
-      this.itens.push(item);
+  adicionarItemNoCarrinho(item: Item) {
+    this.itens.push(item);
   }
 
-  retornarItensDoCarrinho(): Item[]{
+  retornarItensDoCarrinho(): Item[] {
     return this.itens;
   }
 

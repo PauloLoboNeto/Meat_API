@@ -1,0 +1,17 @@
+.pull-center{
+  margin-left: 32%;
+  margin-top: 7%;
+}
+
+.fundo-form{
+  padding-top: 4%;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-bottom: 6%;
+  background-color: white;
+  border-color: black;
+  border-radius: 4%;
+  border-width: 2%;
+  border-color: blue;
+
+}

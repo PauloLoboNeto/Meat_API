@@ -1,8 +1,22 @@
 <section class="content-header">
     <h1>
         Todos os Restaurantes
+        <a (click)="toggleSearch()" class="search-link  pull-right"><i class="fa fa-search"></i></a>
     </h1>
-</section>
+    <h5><a *ngIf="logado()" [routerLink]="['/cadastro']">Adicionar restaurante  <i class="fa fa-plus" aria-hidden="true"></i></a></h5>
+       <div class="row">
+      <div class="col-xs-12" [@toggleSearch]="searchBarState">
+        <form [formGroup]="searchForm">
+          <div class="form-group" >
+              <input type="text" formControlName="searchControl" class="form-control" placeholder="O que você está procurando?">
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+  </section>
+
 
 <section class="content">
 

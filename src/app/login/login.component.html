@@ -1,0 +1,21 @@
+<section class="content">
+  <form [formGroup]="formGroup" class="pull-center">
+    <div class="form-row col-md-6 col-xs-6 fundo-form">
+      <div class="login-logo">
+        <b>MEAT</b> | Login
+      </div>
+      <p class="login-box-msg">Por favor, efetue o login para continuar</p>
+      <div class="row has-feedback">
+        <input formControlName="email" class="form-control" type="text" placeholder="email">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="row has-feedback" style="margin-top: 8%">
+        <input formControlName="password" class="form-control" type="password" placeholder="password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row" style="margin-top: 5%">
+        <button [disabled]="formGroup.invalid" (click)="login()" type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+      </div>
+    </div>
+  </form>
+</section>

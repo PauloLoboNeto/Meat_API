@@ -1,0 +1,30 @@
+<section class="content" style="margin-top: 5%">
+  <h3>{{title}}</h3>
+  <form [formGroup]="formGroup">
+    <div class="form-row">
+      <div class="row" style="margin-top: 2%">
+        <div class="col-md-6 col-xs-6">
+          <label>Nome</label>
+          <input formControlName="nome" type="text" class="form-control" placeholder="Digite o nome do restaurante">
+        </div>
+        <div class="col-md-6 col-xs-6">
+          <label>Categoria</label>
+          <input formControlName="category" type="text" class="form-control" placeholder="Digite a categoria do restaurante">
+        </div>
+      </div>
+      <div class="row" style="margin-top: 2%">
+        <div class="col-md-6 col-xs-6">
+          <label>About</label>
+          <textarea rows="5" style="resize: none" formControlName="about" class="form-control" placeholder="Digite o nome do restaurante"></textarea>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <label>Horário de atendimento</label>
+            <textarea  rows="5" style="resize: none" formControlName="hours" type="text" class="form-control"
+              placeholder="Digite o horário de atendimento do restaurante"></textarea>
+          </div>
+      </div>
+      <button [disabled]="formGroup.invalid" (click)="gravarFormulario()" style="margin-top: 3%"
+        class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</section>

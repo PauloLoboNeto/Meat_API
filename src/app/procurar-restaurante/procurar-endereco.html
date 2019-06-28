@@ -1,0 +1,31 @@
+<form [formGroup]="formGroup">
+
+  <div class="row">
+    <div class="col-md-2 col-xs-4">
+      <input formControlName="cep" type="text" class="form-control" placeholder="Digite o cep">
+    </div>
+    <div class="col-md-2 col-xs-4">
+      <button (click)="buscarDados()" [disabled]="formGroup.get('cep').invalid" class="btn btn-primary">Buscar
+        dados</button>
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2%">
+    <div class="col-sm-4 col-xs-4">
+      <input formControlName="city" type="text" class="form-control" placeholder="Cidade">
+    </div>
+    <div class="col-sm-2 col-xs-2">
+      <input formControlName="state" type="text" class="form-control" placeholder="Estado">
+    </div>
+    <div class="col-sm-4 col-xs-4">
+      <input formControlName="district" type="text" class="form-control" placeholder="Bairro">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 2%">
+    <div class="col-sm-4 col-md-4 col-xs-6">
+      <input formControlName="address" type="text" class="form-control" placeholder="Rua">
+    </div>
+    <div class="col-sm-1 col-md-1 col-xs-1">
+      <input type="text" class="form-control" formControlName="number" placeholder="N°" autocomplete="off" required>
+    </div>
+  </div>
+</form>

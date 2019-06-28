@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, forwardRef } from '@angular/core';
-import { RadioOption } from './radio-option.model';
+import { RadioOption } from './radio-option.component';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -7,7 +7,7 @@ import {NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
   templateUrl: './radius.component.html',
   providers:[{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(()=> RadiusComponent),
+    useExisting: forwardRef(() => RadiusComponent),
     multi: true
   }]
 })

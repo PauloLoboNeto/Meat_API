@@ -4,10 +4,7 @@
 <section class="content">
   <section class="invoice">
 
-    {{form.valid}}
-    {{form.value | json}}
-
-    <form #form="ngForm" novalidate>
+    <form [formGroup]="orderForm" novalidate>
       <div class="row">
         <div class="col-xs-12">
           <h2 class="page-header">
@@ -16,53 +13,53 @@
         </div>
       </div>
 
-      <div class="row invoice-info">
-        <div class="col-xs-12">
-          <p class="lead">Endereço de Entrega:</p>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-9">
+          <p class="lead">Seus Dados:</p>
         </div>
+
+        <div class="col-xs-12 col-sm-3">
+          <span class="help-block pull-right has-error-block" *ngIf="orderForm.hasError('emailsNotMatch')"><i
+              class="fa fa-remove"></i>Emails não conferem</span> </div>
+
+
         <div class="col-sm-6 col-xs-12">
-          <div class="form-group"
-            [class.has-success]="atributoNgEndereco.valid && (atributoNgEndereco.dirty || atributoNgEndereco.touched)"
-            [class.has-error]="atributoNgEndereco.invalid && (atributoNgEndereco.dirty || atributoNgEndereco.touched)">
-            <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Endereço</label>
-            <input type="text" class="form-control" #atributoNgEndereco="ngModel" required minlength="5" name="adress"
-              ngModel placeholder="Endereço" autocomplete="off">
-            <span class="help-block"
-              *ngIf="atributoNgEndereco.valid && (atributoNgEndereco.touched || atributoNgEndereco.dirty)"><i
-                class="fa fa-check"></i> Ok</span>
-            <span class="help-block"
-              *ngIf="atributoNgEndereco.invalid && (atributoNgEndereco.touched || atributoNgEndereco.dirty)"><i
-                class="fa fa-remove"></i> Error</span>
+          <div class="form-group" [class.has-success]="orderForm.get('name').valid"
+            [class.has-error]="orderForm.get('name').invalid && orderForm.get('name').touched">
+            <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i>Name</label>
+            <input type="text" class="form-control" formControlName="name" placeholder="Nome" autocomplete="off">
           </div>
+
+
         </div>
+
         <div class="col-sm-2 col-xs-6">
-          <div class="form-group"
-            [class.has-success]="atributoNgNumero.valid && (atributoNgNumero.dirty || atributoNgNumero.touched)"
-            [class.has-error]="atributoNgNumero.invalid && (atributoNgNumero.dirty || atributoNgNumero.touched)">
-            <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Número</label>
-            <input pattern="^[0-9]*$" type="text" class="form-control" name="number" ngModel #atributoNgNumero="ngModel"
-              placeholder="Número" autocomplete="off" required>
-            <span class="help-block"
-              *ngIf="atributoNgNumero.valid && (atributoNgNumero.touched || atributoNgNumero.dirty)"><i
-                class="fa fa-check"></i> Ok</span>
-            <span class="help-block"
-              *ngIf="atributoNgNumero.invalid && (atributoNgNumero.touched || atributoNgNumero.dirty)"><i
-                class="fa fa-remove"></i> Error</span>
+          <div class="form-group">
+            <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i>Email</label>
+            <input type="text" class="form-control" formControlName="email" placeholder="Email" autocomplete="off"
+              required>
           </div>
         </div>
         <div class="col-sm-4 col-xs-6">
           <div class="form-group">
-            <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i> Complemento</label>
-            <input type="text" class="form-control" name="optional" ngModel placeholder="Complemento">
+            <label class="control-label sr-only" for="inputSuccess"><i class="fa fa-check"></i>Confirmar E-mail</label>
+            <input type="text" class="form-control" formControlName="emailConfirmation" placeholder="Confirmar E-mail">
           </div>
 
         </div>
-        <!-- /.col -->
       </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <p class="lead">Endereço de Entrega:</p>
+        </div>
+      </div>
+      <mt-procurar-endereco></mt-procurar-endereco>
       <!-- /.row -->
 
       <!-- Table row -->
-      <div class="row">
+      <div class="row" style="margin-top: 2%">
         <div class="col-xs-12">
           <p class="lead">Itens do Pedido:</p>
         </div>
@@ -79,7 +76,7 @@
           <p class="lead">Formas de Pagamento:</p>
 
           <div class="form-group">
-            <mt-radius required [options]="paymentsOptions" name="paymentOption" ngModel></mt-radius>
+            <mt-radius required [options]="paymentsOptions" formControlName="paymentOption"></mt-radius>
           </div>
 
         </div>
@@ -95,7 +92,8 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <button class="btn btn-success pull-right" (click)="checkOrder(form.value)" [disabled]="form.invalid || cartItens().length < 1"><i class="fa fa-credit-card"></i> Concluir
+        <button class="btn btn-success pull-right" (click)="checkOrder(orderForm.value)"
+          [disabled]="orderForm.invalid || cartItens().length < 1"><i class="fa fa-credit-card"></i> Concluir
           Pedido
         </button>
       </div>
